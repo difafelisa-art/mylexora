@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LEXORA</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F0E6;--fg:#2B2D26;--mut:#8C8D7F;--card:#FDFBF6;--line:rgba(70,80,55,.1);--gold:#5F8368;--nav:#FBF8F1;--navfg:#2B2D26;--btn:#7C9A82;--btnfg:#fff;--sh:0 4px 22px rgba(110,95,60,.07);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#171B16;--fg:#ECEFE6;--mut:#9AA093;--card:#21261F;--line:rgba(236,239,230,.1);--gold:#9CC3A5;--nav:#1B201A;--navfg:#ECEFE6;--sh:none}}
+:root[data-theme=dark]{--bg:#171B16;--fg:#ECEFE6;--mut:#9AA093;--card:#21261F;--line:rgba(236,239,230,.1);--gold:#9CC3A5;--nav:#1B201A;--navfg:#ECEFE6;--sh:none}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 'Plus Jakarta Sans',system-ui,sans-serif}
+h1,h2,h3{font-weight:700;margin:0;letter-spacing:-.02em}
+h2{font-size:34px}h3{font-size:20px;margin-bottom:14px}
+aside{background:var(--nav);color:var(--navfg);display:flex;gap:4px;padding:10px;overflow-x:auto;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
+aside .brand{display:none}
+aside button{background:none;border:0;color:var(--mut);font:inherit;font-weight:500;font-size:15px;padding:10px 14px;border-radius:16px;cursor:pointer;white-space:nowrap;transition:.2s;display:flex;gap:10px;align-items:center}
+aside button:hover{color:var(--fg)}aside button.on{background:var(--btn);color:#fff}
+main{padding:20px;max-width:1180px;margin:auto;animation:rise .35s both}
+@keyframes rise{from{opacity:0;transform:translateY(5px)}}
+@media(prefers-reduced-motion:reduce){main{animation:none}}
+@media(min-width:900px){body{display:flex}aside{flex-direction:column;width:280px;min-height:100vh;position:fixed;inset:0 auto 0 0;padding:36px 22px;border:0;border-right:1px solid var(--line);gap:8px}aside .brand{display:block;font:800 36px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.04em;margin:0 0 26px 10px}aside .brand span{color:var(--btn)}aside button{font-size:16px;padding:14px 18px}aside small{display:none}main{margin-left:280px;padding:52px 56px;width:calc(100% - 280px)}}
+@media(max-width:899px){aside small{display:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--sh)}
+.g{display:grid;gap:18px}.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.mut{color:var(--mut);font-size:13px}.gold{color:var(--gold)}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.sp{margin-left:auto}
+.btn{background:var(--btn);color:var(--btnfg);border:0;border-radius:16px;padding:10px 20px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(124,154,130,.3);transition:.2s}.btn:hover{filter:brightness(.95)}.btn.lg{padding:16px 28px;font-size:18px;border-radius:20px}
+.gh{background:none;color:inherit;border:1px solid var(--line);border-radius:14px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}.gh.on,.gh:hover{border-color:var(--btn)}
+.ic{background:none;border:0;color:var(--mut);cursor:pointer;font-size:16px;padding:2px 5px}
+input,select,textarea{width:100%;font:inherit;font-size:14px;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:4px}
+input[type=checkbox]{appearance:none;-webkit-appearance:none;width:24px;height:24px;margin:0;flex:none;border:2px solid var(--mut);border-radius:50%;cursor:pointer;background:none;transition:.2s}
+input[type=checkbox]:checked{background:var(--btn) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.5l2.5 2.5 4.5-5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat;border-color:var(--btn)}
+label{display:block;font-size:12px;color:var(--mut)}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--btn);border-radius:9px;transition:width .5s}
+.big{font:700 42px/1.1 'Plus Jakarta Sans',sans-serif}
+.li{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.li:last-child{border:0}.li>div{flex:1;min-width:0}
+.done{text-decoration:line-through;opacity:.45}
+.pill{display:inline-block;font-size:12px;font-weight:500;padding:2px 12px;border-radius:99px;margin:4px 6px 0 0;background:rgba(124,154,130,.18);color:#5B6B50}
+.pill.High{background:#F6DAD6;color:#B5483C}.pill.Medium{background:#F4E6C8;color:#8A6A1F}.pill.Low{background:#DDEBDD;color:#4B7A55}.pill.dt{background:rgba(140,141,127,.2);color:var(--mut)}
+.qt{background:linear-gradient(135deg,rgba(124,154,130,.2),rgba(124,154,130,.04));font-size:22px;font-weight:500;line-height:1.4}
+.rc{display:flex;gap:28px;align-items:center}
+.tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin:18px 0}.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--mut);font:inherit;font-weight:500;padding:0 0 8px;cursor:pointer}.tabs .on{color:var(--fg);border-color:var(--btn)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cal>div{background:var(--card);padding:4px;min-height:64px;font-size:11px;overflow:hidden}.cal.w>div{min-height:150px}.cal .dim{opacity:.35}
+.cal b{display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;border-radius:50%;font-weight:500}.cal .td{background:var(--btn);color:#fff}
+.cal p{margin:2px 0 0;padding:0 6px;border-radius:6px;background:rgba(124,154,130,.2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cal p.dl{background:#F6DAD6;color:#B5483C}
+.hd{display:grid;grid-template-columns:repeat(7,1fr);font-size:12px;color:var(--mut);margin-bottom:4px}
+.board{display:grid;grid-template-columns:repeat(6,minmax(220px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}
+.col{background:rgba(124,154,130,.12);border-radius:20px;padding:12px;display:grid;gap:10px;align-content:start}.col>.card{padding:14px;font-size:13px;border-radius:18px}
+.note{background:rgba(124,154,130,.16);border-radius:18px;padding:12px 18px;font-size:14px;margin-bottom:16px}
+#modal{position:fixed;inset:0;background:rgba(30,35,25,.45);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}#modal.on{display:flex}
+#modal form{background:var(--card);border-radius:24px;padding:26px;width:100%;max-width:420px;max-height:90vh;overflow:auto;display:grid;gap:12px}
+details{font-size:12px;color:var(--mut)}a{color:var(--gold)}
+.lk{background:none;border:0;color:var(--gold);font:inherit;font-size:13px;cursor:pointer;padding:0;text-decoration:underline}
+.aw{min-height:100vh;display:grid}.ap{display:none}.af{display:flex;align-items:center;justify-content:center;padding:28px}.afi{width:100%;max-width:400px;display:grid;gap:18px}
+.mb{font:800 32px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.04em}.mb span{color:var(--btn)}
+body.auth{display:block}body.auth aside{display:none}body.auth main{margin:0;padding:0;width:100%;max-width:none}
+@media(min-width:900px){.aw{grid-template-columns:1fr 1fr}.ap{display:flex;flex-direction:column;justify-content:space-between;padding:56px;background:linear-gradient(160deg,#7C9A82,#557A60);color:#fff}.brand2{font:800 40px 'Plus Jakarta Sans',sans-serif;letter-spacing:-.04em}.tl{font:700 42px/1.2 'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em;margin:0 0 16px}.mb{display:none}}
+</style></head><body>
+<aside id="nav"></aside><main id="app"></main><div id="modal"></div><div id="toast" style="position:fixed;right:16px;bottom:16px;color:#fff;padding:10px 16px;border-radius:14px;font-size:13px;opacity:0;transition:opacity .3s;z-index:30;pointer-events:none;max-width:80vw"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js"></script>
+<script>
+const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,9);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const fm=d=>d?new Date(d+'T00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'}):'–';
+const CATS=['Academic','Thesis','Internship','Career','Personal'],ST=['To Do','In Progress','Completed'],PR=['Low','Medium','High'];
+const APPS=['Interested','Preparing Documents','Applied','Interview','Accepted','Rejected'];
+const CAR=['Advokat','Legal Officer','Jaksa','Hakim','Notaris','Corporate Legal','Konsultan Hukum','ASN bidang hukum','Akademisi','Peneliti Hukum'];
+const FLD=['Hukum Perdata','Hukum Pidana','Hukum Tata Negara','Hukum Administrasi Negara','Hukum Bisnis','Hukum Internasional','Hukum Islam','Hukum Adat','Hukum Lingkungan','Lainnya'];
+const CH=['BAB I – Pendahuluan','BAB II – Tinjauan Pustaka','BAB III – Metode Penelitian','BAB IV – Hasil Penelitian dan Pembahasan','BAB V – Penutup'];
+const SEC=[['goal','Career Goals',1],['roadmap','Career Roadmap',1],['skill','Skills to Develop'],['legal','Legal Skills Development'],['cv','CV Checklist'],['portfolio','Portfolio Checklist'],['note','Self-Development Notes',0,1]];
+const fresh=()=>({tasks:[],events:[],apps:[],me:{name:'',uni:'',sem:7},car:{target:'',items:[]},th:{title:'',field:'',sup:'',target:'',notes:[],ch:CH.map(()=>({st:'Not Started',p:0,dl:'',note:''}))}});
+let S=fresh(),tab='dash',sub='list',cv={d:new Date(),v:'month'},fl={c:'All',s:'All'},M=null,doc=null,tm;
+const by=(a,i)=>a.find(x=>x.id==i);
+function toast(m,bad){const t=$('#toast');t.textContent=m;t.style.background=bad?'#B5483C':'var(--btn)';t.style.opacity=1;clearTimeout(toast.t);if(!bad)toast.t=setTimeout(()=>t.style.opacity=0,1800)}
+async function doSave(){if(!(U&&sb))return;try{const {error}=await sb.from('workspaces').upsert({user_id:U.id,data:S,updated_at:new Date().toISOString()});toast(error?'Save failed: '+error.message:'Saved ✓',!!error)}catch(e){toast('Save failed: '+e.message,1)}}
+function save(){clearTimeout(tm);tm=setTimeout(doSave,300)}
+const bar=v=>`<div class="bar"><i style="width:${v}%"></i></div>`,emp=t=>`<p class="mut">${t}</p>`;
+const opt=(a,v)=>a.map(o=>`<option ${o==v?'selected':''}>${o}</option>`).join('');
+const fld=(f,v)=>`<label>${f.l}${f.o?`<select name="${f.k}">${opt(f.o,v)}</select>`:f.t=='area'?`<textarea name="${f.k}" rows="3">${esc(v)}</textarea>`:`<input name="${f.k}" type="${f.t||'text'}" ${f.r?'required':''} value="${esc(v)}">`}</label>`;
+function openM(t,fs,init,cb){M={t,fs,init,cb};render()}
+const TF=[{k:'title',l:'Task',r:1},{k:'category',l:'Category',o:CATS},{k:'priority',l:'Priority',o:PR},{k:'status',l:'Status',o:ST},{k:'due',l:'Deadline',t:'date'}];
+const EF=[{k:'title',l:'Event',r:1},{k:'kind',l:'Type',o:['Class','Thesis Guidance','Internship Interview','Personal','Other']},{k:'date',l:'Date',t:'date',r:1},{k:'time',l:'Time',t:'time'},{k:'remind',l:'Reminder',o:['Yes','No']}];
+const AF=[{k:'co',l:'Company / institution',r:1},{k:'pos',l:'Position'},{k:'st',l:'Status',o:APPS},{k:'applied',l:'Date applied',t:'date'},{k:'dl',l:'Registration deadline',t:'date'},{k:'docs',l:'Documents deadline',t:'date'},{k:'iv',l:'Interview date',t:'date'},{k:'link',l:'Listing link',t:'url'},{k:'notes',l:'Notes',t:'area'}];
+const GF=[{k:'date',l:'Date',t:'date'},{k:'text',l:'Supervisor’s direction',t:'area',r:1},{k:'rev',l:'Revisions to make',t:'area'}];
+const NAV=[['dash','🏠','Dashboard'],['plan','✅','To-Do & Calendar'],['thesis','🎓','Thesis'],['intern','💼','Internships'],['career','🧭','Career'],['prof','⚙️','Profile']];
+const nameOf=()=>(S.me.name||'there').split(' ')[0];
+const open=x=>x.status!='Completed';
+function remind(){const t=iso(new Date()),n=iso(new Date(Date.now()+864e5)),r=S.events.filter(e=>e.remind!='No'&&(e.date==t||e.date==n));
+ return r.length?`<div class="note">🔔 ${r.map(e=>`${esc(e.title)} <span class="mut">· ${e.date==t?'today':'tomorrow'}${e.time?' at '+e.time:''}</span>`).join('<br>')}</div>`:''}
+const pills=t=>`<span class="pill ${t.priority}">${t.priority}</span><span class="pill">${t.category}</span>${t.due?`<span class="pill dt">📅 ${fm(t.due)}</span>`:''}`;
+function dash(){const t=iso(new Date()),h=new Date().getHours(),g=h<12?'Good Morning':h<18?'Good Afternoon':'Good Evening',em=h<12?'☀️':h<18?'🌤️':'🌙';
+ const td=S.tasks.filter(x=>x.due==t),dn=td.filter(x=>!open(x)).length,pc=td.length?Math.round(dn/td.length*100):0,C=351.86;
+ const fo=S.tasks.filter(x=>open(x)&&x.due&&x.due<=t).sort((a,b)=>a.due.localeCompare(b.due));
+ const dl=[...S.tasks.filter(x=>x.due>t&&open(x)).map(x=>[x.due,x.title]),...S.apps.filter(a=>a.dl>=t&&!['Accepted','Rejected'].includes(a.st)).map(a=>[a.dl,a.co+' application'])].sort().slice(0,5);
+ const p=Math.round(S.th.ch.reduce((s,c)=>s+c.p,0)/5),ac=S.apps.filter(a=>!['Accepted','Rejected'].includes(a.st)).length;
+ const st=[[S.tasks.length,'Total tasks'],[S.tasks.filter(x=>!open(x)).length,'Completed'],[p+'%','Thesis progress'],[ac,'Active internship applications']];
+ return `<div class="row" style="justify-content:space-between;align-items:flex-start;margin-bottom:28px"><div><h2 style="font-size:40px">${g}, ${esc(nameOf())}! ${em}</h2><p class="mut" style="font-size:18px;margin-top:6px">${new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</p></div><button class="btn lg" data-a="addT">+ New Task</button></div>${remind()}
+ <div class="g g4">${st.map(s=>`<div class="card"><div class="big">${s[0]}</div><div class="mut" style="font-size:15px;margin-top:6px">${s[1]}</div></div>`).join('')}</div>
+ <div class="g g2" style="margin:18px 0"><div class="card rc"><svg width="130" height="130" viewBox="0 0 130 130" style="flex:none"><circle cx="65" cy="65" r="56" fill="none" stroke="var(--line)" stroke-width="16"/><circle cx="65" cy="65" r="56" fill="none" stroke="var(--btn)" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pc/100)}" transform="rotate(-90 65 65)"/><text x="65" y="74" text-anchor="middle" font-size="26" font-weight="700" fill="currentColor">${pc}%</text></svg><div><h3 style="margin-bottom:6px">Today’s Tasks</h3><p class="mut" style="font-size:16px">${dn} of ${td.length} tasks due today are done.</p></div></div>
+ <div class="card qt">“Organize Your Present. Shape Your Future.”<p class="mut" style="font-size:15px;margin-top:10px">Make today count. Build your future.</p></div></div>
+ <div class="card"><h3>Focus for today</h3>${fo.map(x=>`<div class="li"><input type="checkbox" data-c="tick" data-i="${x.id}"><div><b style="font-weight:600">${esc(x.title)}</b><div>${pills(x)}</div></div></div>`).join('')||emp('Nothing pending. Enjoy the calm ✨')}</div>
+ <div class="g g2" style="margin-top:18px"><div class="card"><h3>Upcoming Deadlines</h3>${dl.map(d=>`<div class="li"><div>${esc(d[1])}</div><span class="pill dt">📅 ${fm(d[0])}</span></div>`).join('')||emp('No upcoming deadlines.')}</div>
+ <div class="card"><h3>Jump to</h3><div class="g" style="grid-template-columns:1fr 1fr">${[['plan','✅','To-Do List & Calendar'],['thesis','🎓','Thesis Tracker'],['intern','💼','Internship Tracker'],['career','🧭','Career Planner']].map(([k,i,l])=>`<button class="gh" style="text-align:left;padding:14px" data-a="tab" data-i="${k}">${i} ${l}</button>`).join('')}</div></div></div>`}
+function tasks(){const l=S.tasks.filter(t=>(fl.c=='All'||t.category==fl.c)&&(fl.s=='All'||t.status==fl.s));
+ return `<div class="card"><div class="row" style="margin-bottom:10px"><select style="width:auto;margin:0" data-c="fc">${opt(['All',...CATS],fl.c)}</select><select style="width:auto;margin:0" data-c="fs">${opt(['All',...ST],fl.s)}</select><button class="btn sp" data-a="addT">+ Add task</button></div>
+ ${l.map(t=>`<div class="li"><input type="checkbox" ${t.status=='Completed'?'checked':''} data-c="tick" data-i="${t.id}"><div><span class="${t.status=='Completed'?'done':''}">${esc(t.title)}</span><div>${pills(t)}<span class="pill dt">${t.status}</span></div></div><button class="ic" data-a="editT" data-i="${t.id}">✎</button><button class="ic" data-a="delT" data-i="${t.id}">🗑</button></div>`).join('')||emp('No tasks yet. Add your first one.')}</div>`}
+function calendar(){const c=cv.d,m=cv.v=='month',s=new Date(c);if(m)s.setDate(1);s.setDate(s.getDate()-s.getDay());const n=m?42:7;
+ const D=[...Array(n)].map((_,i)=>{const d=new Date(s);d.setDate(s.getDate()+i);return d});
+ const it=[...S.events.map(e=>({d:e.date,t:e.title,k:e.kind,id:e.id,tm:e.time,e:1})),...S.tasks.filter(t=>t.due&&open(t)).map(t=>({d:t.due,t:t.title,k:'Deadline'}))];
+ const rg=it.filter(i=>i.d>=iso(D[0])&&i.d<=iso(D[n-1])).sort((a,b)=>a.d.localeCompare(b.d));
+ return remind()+`<div class="card"><div class="row" style="margin-bottom:14px"><button class="gh" data-a="mv" data-i="-1">‹</button><button class="gh" data-a="mv" data-i="1">›</button><h3 style="margin:0 0 0 6px">${c.toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</h3>
+ <span class="sp row">${['month','week'].map(v=>`<button class="gh ${cv.v==v?'on':''}" data-a="view" data-i="${v}">${v}</button>`).join('')}<button class="btn" data-a="addE">+ Add event</button></span></div>
+ <div class="hd">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=>`<span>${d}</span>`).join('')}</div>
+ <div class="cal ${m?'':'w'}">${D.map(d=>{const k=iso(d),x=it.filter(i=>i.d==k);return `<div class="${m&&d.getMonth()!=c.getMonth()?'dim':''}"><b class="${k==iso(new Date())?'td':''}">${d.getDate()}</b>${x.slice(0,m?2:8).map(i=>`<p class="${i.k=='Deadline'?'dl':''}">${esc(i.t)}</p>`).join('')}${m&&x.length>2?`<span class="mut">+${x.length-2}</span>`:''}</div>`}).join('')}</div></div>
+ <div class="card" style="margin-top:14px"><h3>Agenda</h3>${rg.map(i=>`<div class="li"><span class="mut" style="width:54px">${fm(i.d)}</span><div>${esc(i.t)} <span class="mut">· ${i.k}${i.tm?' · '+i.tm:''}</span></div>${i.e?`<button class="ic" data-a="delE" data-i="${i.id}">🗑</button>`:''}</div>`).join('')||emp('No agenda in this period.')}</div>`}
+const plan=()=>`<h2>To-Do List & Calendar</h2><div class="tabs">${[['list','To-Do List'],['cal','Calendar']].map(([k,l])=>`<button class="${sub==k?'on':''}" data-a="sub" data-i="${k}">${l}</button>`).join('')}</div>${sub=='list'?tasks():calendar()}`;
+function thesis(){const T=S.th,p=Math.round(T.ch.reduce((s,c)=>s+c.p,0)/5);
+ return `<h2>Thesis Tracker</h2><div class="card g g2" style="margin:18px 0 14px"><label style="grid-column:1/-1">Thesis title<input data-c="th" data-k="title" value="${esc(T.title)}"></label>
+ <label>Field of law<select data-c="th" data-k="field"><option value="">Select…</option>${opt(FLD,T.field)}</select></label><label>Supervisor<input data-c="th" data-k="sup" value="${esc(T.sup)}"></label>
+ <label>Completion target<input type="date" data-c="th" data-k="target" value="${T.target}"></label><div style="grid-column:1/-1"><div class="row" style="justify-content:space-between"><span>Overall progress</span><span>${p}%</span></div>${bar(p)}</div></div>
+ <div class="g g2">${CH.map((n,i)=>{const c=T.ch[i];return `<div class="card g"><h3 style="margin:0">${n}</h3>${bar(c.p)}<div class="g" style="grid-template-columns:repeat(3,1fr)"><label>Status<select data-c="ch" data-i="${i}" data-k="st">${opt(['Not Started','In Progress','Revision','Completed'],c.st)}</select></label><label>Progress %<input type="number" min="0" max="100" data-c="ch" data-i="${i}" data-k="p" value="${c.p}"></label><label>Deadline<input type="date" data-c="ch" data-i="${i}" data-k="dl" value="${c.dl}"></label></div><textarea rows="2" placeholder="Personal notes" data-c="ch" data-i="${i}" data-k="note">${esc(c.note)}</textarea></div>`}).join('')}</div>
+ <div class="card" style="margin-top:14px"><div class="row" style="margin-bottom:8px"><h3 style="margin:0">Guidance Notes</h3><button class="btn sp" data-a="addG">+ Add note</button></div>
+ ${[...T.notes].reverse().map(g=>`<div class="li" style="align-items:flex-start"><div><div class="mut">${fm(g.date)}</div>${esc(g.text)}${g.rev?`<div class="gold">Revision: ${esc(g.rev)}</div>`:''}</div><button class="ic" data-a="delG" data-i="${g.id}">🗑</button></div>`).join('')||emp('Save feedback and revisions from your supervisor here.')}</div>`}
+function intern(){return `<div class="row" style="margin-bottom:18px"><h2>Internship Tracker</h2><button class="btn sp" data-a="addA">+ Add application</button></div><div class="board">${APPS.map(s=>`<div class="col"><div class="row mut" style="justify-content:space-between;padding:0 4px"><span>${s}</span><span>${S.apps.filter(a=>a.st==s).length}</span></div>${S.apps.filter(a=>a.st==s).map(a=>`<div class="card"><h3 style="font-size:16px;margin:0">${esc(a.co)}</h3><div class="mut">${esc(a.pos)}</div><div class="mut" style="margin:6px 0">${a.dl?'Deadline '+fm(a.dl)+'<br>':''}${a.docs?'Documents '+fm(a.docs)+'<br>':''}${a.iv?'Interview '+fm(a.iv)+'<br>':''}${a.link?`<a href="${esc(a.link)}" target="_blank" rel="noreferrer">Listing</a>`:''}</div>${a.notes?`<div style="margin-bottom:6px">${esc(a.notes)}</div>`:''}<details><summary>History</summary>${(a.h||[]).map(h=>`<div>${fm(h.at)} · ${h.s}</div>`).join('')}</details><select data-c="mv" data-i="${a.id}" style="font-size:12px">${opt(APPS,a.st)}</select><div class="row" style="margin-top:6px"><button class="ic" data-a="editA" data-i="${a.id}">✎</button><button class="ic" data-a="delA" data-i="${a.id}">🗑</button></div></div>`).join('')}</div>`).join('')}</div>${S.apps.length?'':emp('No applications yet. Add the first opportunity you’re interested in.')}`}
+function career(){return `<h2>Career Planner</h2><div class="card" style="margin:18px 0 14px;max-width:340px"><label>Career target<select data-c="ct"><option value="">Select a path…</option>${opt(CAR,S.car.target)}</select></label></div><div class="g g2" style="align-items:start">${SEC.map(([k,t,tr,nt])=>{const it=S.car.items.filter(x=>x.k==k),dn=it.filter(x=>x.done).length;
+ return `<div class="card"><div class="row" style="justify-content:space-between"><h3>${t}</h3>${!nt&&it.length?`<span class="mut">${dn}/${it.length}</span>`:''}</div>${!nt&&it.length?bar(Math.round(dn/it.length*100)):''}<div style="margin:10px 0">${it.map(x=>`<div class="li">${nt?'':`<input type="checkbox" ${x.done?'checked':''} data-c="ci" data-i="${x.id}">`}<div class="${x.done?'done':''}">${esc(x.t)}${x.term?`<span class="mut"> · ${x.term}</span>`:''}</div><button class="ic" data-a="delI" data-i="${x.id}">🗑</button></div>`).join('')}</div>
+ <form data-f="item" data-k="${k}" class="row" style="flex-wrap:nowrap"><input name="t" placeholder="Add item" style="margin:0">${tr?`<select name="term" style="width:auto;margin:0"><option>Short-term</option><option>Long-term</option></select>`:''}<button class="btn">+</button></form></div>`}).join('')}</div>`}
+const prof=()=>`<h2>Profile</h2><form data-f="me" class="card g" style="margin-top:18px;max-width:460px"><p class="mut" style="margin:0">${esc(U.email)}</p><label>Full name<input name="name" required value="${esc(S.me.name)}"></label><label>University<input name="uni" value="${esc(S.me.uni)}"></label><label>Semester<input name="sem" type="number" min="1" max="14" value="${S.me.sem}"></label><div class="row"><button class="btn">Save profile</button><span class="gold" id="ok"></span></div></form><p class="mut" style="max-width:460px;margin-top:14px">Your workspace is saved to your account and synced across devices.</p>`;
+/* ====== ISI 2 BARIS INI DENGAN DATA SUPABASE ANDA ====== */
+const SUPABASE_URL='https://pgvohcblwdmtuwxgnijn.supabase.co',SUPABASE_KEY='sb_publishable_GACxcRBkmUBFfQcaMl0cGA_RxznTN7C';
+/* ======================================================= */
+/* Lewat proxy Netlify (/sb) agar tidak terblokir jaringan. Otomatis nonaktif di file lokal. */
+const PROXY=false; /* GitHub Pages tidak punya proxy: koneksi langsung ke Supabase */
+let sb=null;try{if(!SUPABASE_URL.includes('PASTE'))sb=supabase.createClient(PROXY?location.origin+'/sb':new URL(SUPABASE_URL.trim()).origin,SUPABASE_KEY.trim())}catch(e){}
+let U=null,am='login',amsg='',rcode='';
+async function loadUser(u){U={id:u.id,email:u.email,name:u.user_metadata?.full_name||''};let o=null;
+ try{const {data,error}=await sb.from('workspaces').select('data').maybeSingle();if(error)toast('Load failed: '+error.message,1);o=data?.data}catch(e){toast('Load failed: '+e.message,1)}
+ S={...fresh(),...(o||{})};if(!S.me.name)S.me.name=U.name;if(!o)save()}
+async function authSubmit(f){const d=Object.fromEntries(new FormData(f)),em=(d.email||'').trim().toLowerCase();amsg='';
+ if(!sb){amsg='Fill in SUPABASE_URL and SUPABASE_KEY at the top of the script first.';return render()}
+ try{
+  if(am=='register'){if(d.password!=d.confirm)amsg='Passwords do not match.';else{const {data,error}=await sb.auth.signUp({email:em,password:d.password,options:{data:{full_name:d.name.trim()}}});if(error)amsg=error.message;else if(data.session)await loadUser(data.user);else{am='login';amsg='Account created. Check your email to confirm, then sign in.'}}}
+  else if(am=='login'){const {data,error}=await sb.auth.signInWithPassword({email:em,password:d.password});if(error)amsg=error.message;else await loadUser(data.user)}
+  else if(am=='forgot'){const {error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.href.split('#')[0]});amsg=error?error.message:'Reset link sent. Check your inbox.'}
+  else{const {error}=await sb.auth.updateUser({password:d.password});if(error)amsg=error.message;else{await sb.auth.signOut();am='login';amsg='Password updated. Please sign in.'}}
+ }catch(e){amsg='Something went wrong. Please try again.'}
+ render()}
+function authView(){
+ const T={login:'Welcome back',register:'Create your account',forgot:'Reset password',reset:'Set a new password'},B={login:'Sign in',register:'Create account',forgot:'Send reset link',reset:'Update password'};
+ const b=`<h2>${T[am]}</h2>${sb?'':'<p class="note">Supabase isn’t configured yet. Fill in SUPABASE_URL and SUPABASE_KEY at the top of the script.</p>'}${amsg?`<p class="gold" style="margin:0">${amsg}</p>`:''}<form data-f="auth" class="g">${am=='register'?'<label>Full name<input name="name" required autocomplete="name"></label>':''}${am!='reset'?'<label>Email<input name="email" type="email" required autocomplete="email"></label>':''}${am!='forgot'?`<label>${am=='reset'?'New password':'Password'}<input name="password" type="password" minlength="6" required></label>`:''}${am=='register'?'<label>Confirm password<input name="confirm" type="password" minlength="6" required></label>':''}<button class="btn lg">${B[am]}</button></form><div class="row" style="justify-content:space-between">${am=='login'?'<button class="lk" data-a="am" data-i="register">Create account</button><button class="lk" data-a="am" data-i="forgot">Forgot password?</button>':'<button class="lk" data-a="am" data-i="login">Back to sign in</button>'}</div>`;
+ $('#app').innerHTML=`<div class="aw"><div class="ap"><div class="brand2">lexora<span style="opacity:.7">.</span></div><div><p class="tl">Organize Your Present.<br>Shape Your Future.</p><p style="max-width:360px;opacity:.85">A private workspace for law students: tasks, thesis, internships and career in one place.</p></div><span></span></div><div class="af"><div class="afi"><div class="mb">lexora<span>.</span></div>${b}</div></div></div>`}
+function render(){
+ document.body.className=U&&!rcode?'':'auth';if(!U||rcode){$('#nav').innerHTML='';$('#modal').className='';return authView()}
+ $('#nav').innerHTML=`<div class="brand">lexora<span>.</span></div>`+NAV.map(([k,i,l])=>`<button class="${tab==k?'on':''}" data-a="tab" data-i="${k}"><span>${i}</span>${l}</button>`).join('')+'<button data-a="logout" style="margin-top:auto"><span>🚪</span>Logout</button>';
+ const V={dash,plan,thesis,intern,career,prof};$('#app').innerHTML=V[tab]();
+ const m=$('#modal');m.className=M?'on':'';m.innerHTML=M?`<form data-f="modal"><div class="row"><h3 style="margin:0">${M.t}</h3><button type="button" class="ic sp" data-a="close">✕</button></div>${M.fs.map(f=>fld(f,M.init[f.k]??'')).join('')}<button class="btn">Save</button></form>`:''}
+const A={am:i=>{am=i;amsg='';render()},rdone:()=>{rcode='';render()},logout:async()=>{clearTimeout(tm);if(U&&sb){try{await sb.from('workspaces').upsert({user_id:U.id,data:S})}catch(e){}await sb.auth.signOut()}U=null;S=fresh();M=null;tab='dash';am='login';amsg='';render()},tab:i=>{tab=i;render();scrollTo(0,0)},sub:i=>{sub=i;render()},close:()=>{M=null;render()},mv:i=>{const d=new Date(cv.d);if(cv.v=='month'){d.setDate(1);d.setMonth(d.getMonth()+ +i)}else d.setDate(d.getDate()+7* +i);cv.d=d;render()},view:i=>{cv.v=i;render()},
+ addT:()=>openM('New task',TF,{category:'Academic',priority:'Medium',status:'To Do'},d=>S.tasks.push({id:uid(),...d})),editT:i=>{const t=by(S.tasks,i);openM('Edit task',TF,t,d=>Object.assign(t,d))},delT:i=>{S.tasks=S.tasks.filter(x=>x.id!=i);save();render()},
+ addE:()=>openM('New event',EF,{kind:'Class',remind:'Yes',date:iso(new Date())},d=>S.events.push({id:uid(),...d})),delE:i=>{S.events=S.events.filter(x=>x.id!=i);save();render()},
+ addG:()=>openM('Guidance note',GF,{date:iso(new Date())},d=>S.th.notes.push({id:uid(),...d})),delG:i=>{S.th.notes=S.th.notes.filter(x=>x.id!=i);save();render()},
+ addA:()=>openM('New application',AF,{st:'Interested'},d=>S.apps.push({id:uid(),...d,h:[{s:d.st,at:iso(new Date())}]})),
+ editA:i=>{const a=by(S.apps,i),o=a.st;openM('Edit application',AF,a,d=>{Object.assign(a,d);if(d.st!=o)a.h.push({s:d.st,at:iso(new Date())})})},delA:i=>{S.apps=S.apps.filter(x=>x.id!=i);save();render()},delI:i=>{S.car.items=S.car.items.filter(x=>x.id!=i);save();render()}};
+const C={fc:t=>{fl.c=t.value;render()},fs:t=>{fl.s=t.value;render()},tick:t=>{by(S.tasks,t.dataset.i).status=t.checked?'Completed':'To Do';save();render()},
+ th:t=>{S.th[t.dataset.k]=t.value;save()},ch:t=>{const c=S.th.ch[+t.dataset.i],k=t.dataset.k;c[k]=k=='p'?Math.min(100,Math.max(0,+t.value||0)):t.value;save();if(k=='p'||k=='st')render()},
+ mv:t=>{const a=by(S.apps,t.dataset.i);a.st=t.value;(a.h=a.h||[]).push({s:t.value,at:iso(new Date())});save();render()},ct:t=>{S.car.target=t.value;save()},ci:t=>{by(S.car.items,t.dataset.i).done=t.checked;save();render()}};
+const F={auth:authSubmit,modal:f=>{M.cb(Object.fromEntries(new FormData(f)));M=null;save();render()},
+ item:f=>{const d=Object.fromEntries(new FormData(f));if(d.t.trim()){S.car.items.push({id:uid(),k:f.dataset.k,t:d.t.trim(),term:d.term||null,done:false});save();render()}},
+ me:f=>{const d=Object.fromEntries(new FormData(f));S.me={name:d.name,uni:d.uni,sem:+d.sem||7};save();$('#ok').textContent='Saved'}};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)A[b.dataset.a]?.(b.dataset.i)});
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset.c)C[t.dataset.c](t)});
+document.addEventListener('submit',e=>{e.preventDefault();F[e.target.dataset.f]?.(e.target)});
+(async()=>{if(sb){sb.auth.onAuthStateChange(e=>{if(e=='PASSWORD_RECOVERY'){am='reset';U=null;render()}});try{const {data}=await sb.auth.getSession();if(data.session&&am!='reset')await loadUser(data.session.user)}catch(e){}}render()})();
+</script></body></html>
